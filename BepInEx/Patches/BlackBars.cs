@@ -7,7 +7,7 @@ namespace JKSFix;
 public class BlackBars : ToggleableMod
 {
     public static bool IsBlackBars(UXScreenBorder border)
-        => border.name.StartsWith("CommonScreenBorder");
+        => border.name.StartsWith("CommonHorizontalScreenBorder");
 
     public override void SetUp()
     {
