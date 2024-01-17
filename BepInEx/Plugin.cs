@@ -3,6 +3,7 @@ using BepInEx.Logging;
 using BepInEx.Unity.IL2CPP;
 using HarmonyLib;
 using Il2CppInterop.Runtime.Attributes;
+using Il2CppInterop.Runtime.Injection;
 using System.Collections.Generic;
 using System.IO;
 using UnityEngine;
@@ -80,7 +81,11 @@ public class Plugin : BasePlugin
         new Animation().SetUp(
             ScrollRects["AnimationScroll"],
             Toggles["AnimationUnset"],
-            Prefabs["Toggle"]); 
+            Prefabs["Toggle"]);
+
+        ClassInjector.RegisterTypeInIl2Cpp<TransformInterpolator>();
+
+        ClassInjector.RegisterTypeInIl2Cpp<CustomInGameCamera>();
 
         new BlackBars().SetUp(
             Config.Bind("Main", "BlackBars", true, "Disable to remove ultrawide black bars."),
